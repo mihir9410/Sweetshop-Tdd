@@ -99,3 +99,29 @@ describe('Sweetshop - Quantity Update', () => {
         expect(sweets[0].sweet_quantity).toBe(15); // Original quantity was 10, now should be 15
     });
 });
+
+describe('Sweetshop - Delete Sweet', () => {
+    it('should delete a sweet from the shop', () => {
+        const sweetToDelete = {
+            id: 101,
+            sweet_name: 'Gulab Jamun',
+            sweet_category: 'milk-based',
+            sweet_price: 30,
+            sweet_quantity: 20,
+        }
+
+        SweetShop.addSweet(sweetToDelete);
+        const sweetsBeforeDelete = SweetShop.getAllSweets();
+        expect(sweetsBeforeDelete.length).toBe(4); // 3 from previous tests + 1 new
+
+        // Simulate deletion (not implemented in original code, but for testing purposes)
+        SweetShop.deleteSweet(sweetToDelete.id);
+        
+        const sweetsAfterDelete = SweetShop.getAllSweets();
+        expect(sweetsAfterDelete.length).toBe(3); // Should be back to 3 sweets
+    });
+
+    it('should not delete a sweet that does not exist', () => {
+        expect(() => SweetShop.deleteSweet(999)).toThrow('Sweet with this ID does not exist');
+    });
+});
