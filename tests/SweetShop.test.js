@@ -1,4 +1,4 @@
-const sweetShop = require('../src/SweetShop');
+const SweetShop = require('../src/SweetShop.js');
 
 describe('Sweetshop - Adding sweets', () => {
     it('should add a sweet to the shop', () => {
@@ -10,8 +10,8 @@ describe('Sweetshop - Adding sweets', () => {
             sweet_quantity: 10,
         }
 
-        sweetShop.addSweet(sweet);
-        const sweets = sweetShop.getAllSweets();
+        SweetShop.addSweet(sweet);
+        const sweets = SweetShop.getAllSweets();
 
         expect(sweets.length).toBe(1);
         expect(sweets[0].id).toBe(100);
