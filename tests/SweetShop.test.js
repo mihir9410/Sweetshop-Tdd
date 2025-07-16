@@ -125,3 +125,40 @@ describe('Sweetshop - Delete Sweet', () => {
         expect(() => SweetShop.deleteSweet(999)).toThrow('Sweet with this ID does not exist');
     });
 });
+
+describe('Sweetshop - Sorting Sweets', () => {
+    it('should sort sweets by price in given order', () => {
+        const sweet1 = {
+            id: 106,
+            sweet_name: 'Chocolate Bar',
+            sweet_category: 'chocolate-based',
+            sweet_price: 20,
+            sweet_quantity: 10,
+        }
+
+        const sweet2 = {
+            id: 107,
+            sweet_name: 'Candy',
+            sweet_category: 'sugar-based',
+            sweet_price: 10,
+            sweet_quantity: 5,
+        }
+
+        SweetShop.addSweet(sweet1);
+        SweetShop.addSweet(sweet2);
+
+        // Assuming sortSweet method is implemented
+        SweetShop.sortSweet('sweet_price', 'asc');
+        const sweets = SweetShop.getAllSweets();
+
+        expect(sweets[0].sweet_price).toBe(10); // Candy should be first
+        expect(sweets[1].sweet_price).toBe(20); // Chocolate Bar should be second
+    });
+    it('should sort sweets by name in descending order', () => {
+        SweetShop.sortSweet('sweet_name', 'desc');
+        const sweets = SweetShop.getAllSweets();
+
+        expect(sweets[0].sweet_name).toBe('Ladoo'); // Assuming Ladoo is the last alphabetically
+        expect(sweets[1].sweet_name).toBe('Kaju Katli'); // Next in alphabetical order
+    });
+});

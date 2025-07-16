@@ -29,6 +29,9 @@ class SweetShop{
         }
         this.sweets.splice(index, 1);
     }
+
+    sortSweet(by, order){
+    }
 }
 
 
