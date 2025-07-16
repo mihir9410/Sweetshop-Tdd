@@ -103,10 +103,10 @@ describe('Sweetshop - Quantity Update', () => {
 describe('Sweetshop - Delete Sweet', () => {
     it('should delete a sweet from the shop', () => {
         const sweetToDelete = {
-            id: 101,
+            id: 105,
             sweet_name: 'Gulab Jamun',
             sweet_category: 'milk-based',
-            sweet_price: 30,
+            sweet_price: 50,
             sweet_quantity: 20,
         }
 
