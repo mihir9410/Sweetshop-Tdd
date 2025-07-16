@@ -45,3 +45,57 @@ describe('Sweetshop - Retrieving sweets', () => {
         expect(sweets[2].id).toBe(102);
     });
 })
+
+describe('Sweetshop - Edge cases', () => {
+    it('should throw an error when adding an invalid sweet', () => {
+        const invalidSweet = {
+            id: 103,
+            sweet_name: '',
+            sweet_category: 'unknown',
+            sweet_price: -10, // Invalid price
+            sweet_quantity: 5,
+        }
+
+        expect(() => SweetShop.addSweet(invalidSweet)).toThrow('Invalid sweet object');
+    });
+
+    it('should throw an error when adding a sweet with missing properties', () => {
+        const incompleteSweet = {
+            id: 104,
+            sweet_name: 'Incomplete Sweet',
+            // Missing category, price, and quantity
+        }
+
+        expect(() => SweetShop.addSweet(incompleteSweet)).toThrow('Invalid sweet object');
+    });
+
+    it('should not allow adding a sweet with an existing ID', () => {
+        const duplicateSweet = {
+            id: 100, // Same ID as the first sweet
+            sweet_name: 'Duplicate Kaju Katli',
+            sweet_category: 'nut-based',
+            sweet_price: 60,
+            sweet_quantity: 5,
+        }
+
+        expect(() => SweetShop.addSweet(duplicateSweet)).toThrow('Sweet with this ID already exists');
+    });
+});
+
+describe('Sweetshop - Quantity Update', () => {
+    it('should increase quantity of an existing sweet', () => {
+        const sweet = {
+            id: 100,
+            sweet_name: 'Kaju Katli',
+            sweet_category: 'nut-based',
+            sweet_price: 50,
+            sweet_quantity: 5, // Adding more quantity
+        }
+
+        SweetShop.addSweet(sweet);
+        const sweets = SweetShop.getAllSweets();
+
+        expect(sweets.length).toBe(3); // Should still be 3 sweets
+        expect(sweets[0].sweet_quantity).toBe(15); // Original quantity was 10, now should be 15
+    });
+});
