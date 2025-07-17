@@ -58,4 +58,4 @@ npm test
 ![SweetShop UI](public/images/image.png)
 
 **Test Report**
-![Test Coverage Report](coverage/lcov-report/index.html)
+[Test Coverage Report](coverage/lcov-report/index.html)
