@@ -43,6 +43,9 @@ class SweetShop{
             throw new Error('Invalid sort order');
         });
     }
+
+    purchaseSweet(sweetId, quantity){
+    }
 }
 
 

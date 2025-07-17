@@ -172,3 +172,25 @@ describe('Sweetshop - Invalid Sort Operations', () => {
         expect(() => SweetShop.sortSweet('sweet_name', 'invalid_order')).toThrow('Invalid sort order');
     });
 });
+
+describe('Sweetshop - Purchase Sweet', () => {
+    it('should purchase a sweet and reduce its quantity', () => {
+        const sweet = {
+            id: 108,
+            sweet_name: 'Milk Cake',
+            sweet_category: 'milk-based',
+            sweet_price: 40,
+            sweet_quantity: 10,
+        }
+
+        SweetShop.addSweet(sweet);
+        SweetShop.purchaseSweet(sweet.id, 2); // Assuming purchaseSweet method is implemented
+
+        const sweets = SweetShop.getAllSweets();
+        expect(sweets.find((s) => s.id === 108).sweet_quantity).toBe(8); // Quantity should be reduced by 2
+    });
+
+    it('should throw an error when purchasing more than available quantity', () => {
+        expect(() => SweetShop.purchaseSweet(108, 20)).toThrow('Not enough quantity available');
+    });
+});
