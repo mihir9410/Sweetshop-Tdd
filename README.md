@@ -24,21 +24,6 @@ Built with:
 
 ---
 
-## 📁 Project Structure
-
-SweetShop/
-├── src/
-│ └── SweetShop.js # Main class logic
-│ └── CLI.js # CLI logic
-├── views/
-│ └── index.ejs # Main dynamic frontend
-├── server.js # Express server
-├── package.json
-└── README.md
-
-
----
-
 ## 🚀 Getting Started
 
 ### 📦 Installation
