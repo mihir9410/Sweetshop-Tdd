@@ -31,6 +31,17 @@ class SweetShop{
     }
 
     sortSweet(by, order){
+        this.sweets.sort((a, b) => {
+            if(![ 'sweet_name', 'sweet_category', 'sweet_price'].includes(by)){
+                throw new Error('Invalid sort key');
+            }
+            if(order === 'asc'){
+                return a[by] > b[by] ? 1 : -1;
+            } else if(order === 'desc'){
+                return a[by] < b[by] ? 1 : -1;
+            }
+            throw new Error('Invalid sort order');
+        });
     }
 }
 

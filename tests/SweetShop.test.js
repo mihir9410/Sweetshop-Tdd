@@ -162,3 +162,13 @@ describe('Sweetshop - Sorting Sweets', () => {
         expect(sweets[1].sweet_name).toBe('Kaju Katli'); // Next in alphabetical order
     });
 });
+
+describe('Sweetshop - Invalid Sort Operations', () => {
+    it('should throw an error for invalid sort key', () => {
+        expect(() => SweetShop.sortSweet('invalid_key', 'asc')).toThrow('Invalid sort key');
+    });
+
+    it('should throw an error for invalid sort order', () => {
+        expect(() => SweetShop.sortSweet('sweet_name', 'invalid_order')).toThrow('Invalid sort order');
+    });
+});
