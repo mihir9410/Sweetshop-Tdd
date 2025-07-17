@@ -4,7 +4,8 @@
   "description": "This is a Cli based application where you can communicate with a Sweet-shop. Basically you can add Sweets, view Sweets, delete Sweets etc.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node src/CLI.js"
   },
   "author": "",
   "license": "ISC",

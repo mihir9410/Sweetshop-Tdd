@@ -19,6 +19,9 @@ class SweetShop{
         this.sweets.push(sweet);
     }
     getAllSweets(){
+        if(this.sweets.length === 0){
+            throw new Error('No sweets found');
+        }
         return this.sweets;
     }
 
@@ -53,6 +56,17 @@ class SweetShop{
             throw new Error('Not enough quantity available');
         }
         sweet.sweet_quantity -= quantity;
+        if(sweet.sweet_quantity === 0){
+            this.deleteSweet(sweetId);
+        }
+        return {
+            id: sweet.id,
+            sweet_name: sweet.sweet_name,
+            sweet_category: sweet.sweet_category,
+            sweet_price: sweet.sweet_price,
+            quantity_purchased: quantity,
+            total_price: sweet.sweet_price * quantity
+        };
     }
 }
 
