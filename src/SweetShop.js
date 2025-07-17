@@ -45,6 +45,14 @@ class SweetShop{
     }
 
     purchaseSweet(sweetId, quantity){
+        const sweet = this.sweets.find((s) => s.id === sweetId);
+        if(!sweet){
+            throw new Error('Sweet with this ID does not exist');
+        }
+        if(sweet.sweet_quantity < quantity){
+            throw new Error('Not enough quantity available');
+        }
+        sweet.sweet_quantity -= quantity;
     }
 }
 

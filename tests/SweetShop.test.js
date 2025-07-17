@@ -193,4 +193,8 @@ describe('Sweetshop - Purchase Sweet', () => {
     it('should throw an error when purchasing more than available quantity', () => {
         expect(() => SweetShop.purchaseSweet(108, 20)).toThrow('Not enough quantity available');
     });
+
+    it('should throw an error when purchasing a non-existent sweet', () => {
+        expect(() => SweetShop.purchaseSweet(999, 1)).toThrow('Sweet with this ID does not exist');
+    });
 });
