@@ -5,11 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node src/CLI.js"
+    "start": "node src/CLI.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jest": "^30.0.4"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
   }
 }
